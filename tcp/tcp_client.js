@@ -36,6 +36,8 @@ client.on("data", (data) => {
     process.stdout.write("Ingrese un mensaje para el servidor TCP: ");
 });
 
+client.on("end", () => {
+    console.log("Desconectado del servidor TCP");
+});
 
-console.log("terminado tod");
 ask();

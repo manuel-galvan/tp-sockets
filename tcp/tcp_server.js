@@ -2,12 +2,25 @@ const net = require("net")
 
 const server = net.createServer((socket) => {
     console.log("Cliente conectado");
-    socket.on("data", (data) => {
-        console.log(`Recibido: ${data.toString()}`);
-        socket.write("mensaje recibido por TCP")
-    });
+    try {
+        socket.on("data", (data) => {
+            console.log(`Recibido: ${data.toString()}`);
+            socket.write("mensaje recibido por TCP")
+        });
+    } catch (error) {
+        console.error(`Error en el servidor TCP: ${error.message}`);
+    }
+}
+);
+
+process.on("uncaughtException", (error) => {
+    console.error(`Error no capturado en el servidor TCP: ${error.message}`);
 });
 
-server.listen(8080, () => {
-    console.log("Servidor TCP escuchando en el puerto 8080");
-});
+// try {
+//     server.listen(8080, () => {
+//         console.log("Servidor TCP escuchando en el puerto 8080");
+//     });
+// } catch (error) {
+//     console.log(`Error al iniciar el servidor TCP: ${error.message}`);
+// }
