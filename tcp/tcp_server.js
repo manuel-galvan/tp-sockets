@@ -1,5 +1,7 @@
 const net = require("net")
 
+const servidor = 8090;
+
 const server = net.createServer((socket) => {
     console.log("Cliente conectado");
     try {
@@ -17,10 +19,4 @@ process.on("uncaughtException", (error) => {
     console.error(`Error no capturado en el servidor TCP: ${error.message}`);
 });
 
-// try {
-//     server.listen(8080, () => {
-//         console.log("Servidor TCP escuchando en el puerto 8080");
-//     });
-// } catch (error) {
-//     console.log(`Error al iniciar el servidor TCP: ${error.message}`);
-// }
+server.listen(servidor, () => { console.log(`Servidor TCP escuchando en el puerto ${servidor}`) });

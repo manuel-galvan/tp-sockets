@@ -1,4 +1,5 @@
 const net = require("net")
+const servidor = 8090;
 const readLine = require("node:readline/promises")
 
 async function ask() {
@@ -25,7 +26,7 @@ async function ask() {
     client.end();
 }
 
-const client = net.createConnection({ port: 8080 }, () => {
+const client = net.createConnection({ port: servidor }, () => {
     console.log("Conectado al servidor TCP \n");
 });
 
